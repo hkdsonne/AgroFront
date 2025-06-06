@@ -40,4 +40,4 @@ async def serve_static(file_path: str):
     return {"error": "File not found"}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)  # <- Исправлено!
+    uvicorn.run("main:app", host="127.0.0.1", port=8001, reload=True)  # <- Исправлено!
