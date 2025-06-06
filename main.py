@@ -1,10 +1,9 @@
 from fastapi import FastAPI, Request
+import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 import os
-
-# uvicorn main:app --reload
 
 app = FastAPI()
 
@@ -41,5 +40,4 @@ async def serve_static(file_path: str):
     return {"error": "File not found"}
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)  # <- Исправлено!
