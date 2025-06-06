@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="теперь есть по-божески написанные три странички, даже код почти причесан">
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="поменяли порт и флаг и корабль">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/courier.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/pokupatel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/pokupatel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749228010992</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="поменяли порт и флаг и корабль">
+      <option name="closed" value="true" />
+      <created>1749230487391</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749230487391</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +176,7 @@
     <MESSAGE value="РЕШИЛА проблему с оформлением главной странички + сделала по-христиански чтобы и css, и js и святой дух присутствовали, теперь так же сделаем со всеми недоделышами" />
     <MESSAGE value="Причесала главную форму точнее ее код, также разобралась с курьерами (больше не пакостят)" />
     <MESSAGE value="теперь есть по-божески написанные три странички, даже код почти причесан" />
-    <option name="LAST_COMMIT_MESSAGE" value="теперь есть по-божески написанные три странички, даже код почти причесан" />
+    <MESSAGE value="поменяли порт и флаг и корабль" />
+    <option name="LAST_COMMIT_MESSAGE" value="поменяли порт и флаг и корабль" />
   </component>
 </project>
