@@ -1,0 +1,505 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Покупатель - Блестяшки AgroDeliveryy</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background-color: #f8f9fa;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #ff69b4;-->
+<!--            color: white;-->
+<!--            padding: 15px 0;-->
+<!--            margin-bottom: 30px;-->
+<!--            box-shadow: 0 2px 5px rgba(0,0,0,0.1);-->
+<!--        }-->
+
+<!--        .header-content {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+<!--        .logo {-->
+<!--            font-size: 24px;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .back-btn {-->
+<!--            background: none;-->
+<!--            border: none;-->
+<!--            color: white;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .tabs {-->
+<!--            display: flex;-->
+<!--            margin-bottom: 20px;-->
+<!--            border-bottom: 1px solid #ddd;-->
+<!--        }-->
+
+<!--        .tab {-->
+<!--            padding: 10px 20px;-->
+<!--            cursor: pointer;-->
+<!--            border-bottom: 3px solid transparent;-->
+<!--        }-->
+
+<!--        .tab.active {-->
+<!--            border-bottom: 3px solid #ff69b4;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .tab-content {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .tab-content.active {-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .order-form {-->
+<!--            background: white;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 20px;-->
+<!--            margin-bottom: 30px;-->
+<!--            box-shadow: 0 2px 10px rgba(0,0,0,0.05);-->
+<!--        }-->
+
+<!--        .form-group {-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .form-label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 5px;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .form-control {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .form-control:focus {-->
+<!--            border-color: #ff69b4;-->
+<!--            outline: none;-->
+<!--        }-->
+
+<!--        .delivery-hours {-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .hours-list {-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+
+<!--        .hour-item {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 5px;-->
+<!--        }-->
+
+<!--        .hour-input {-->
+<!--            flex: 1;-->
+<!--            padding: 8px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-radius: 4px;-->
+<!--        }-->
+
+<!--        .remove-hour {-->
+<!--            margin-left: 10px;-->
+<!--            padding: 8px 12px;-->
+<!--            background-color: #ff6b6b;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .add-hour {-->
+<!--            padding: 8px 12px;-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .submit-btn {-->
+<!--            padding: 12px 20px;-->
+<!--            background-color: #ff69b4;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            font-size: 16px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        .submit-btn:hover {-->
+<!--            background-color: #e6499e;-->
+<!--        }-->
+
+<!--        .orders-list {-->
+<!--            background: white;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 20px;-->
+<!--            box-shadow: 0 2px 10px rgba(0,0,0,0.05);-->
+<!--        }-->
+
+<!--        .order-card {-->
+<!--            border: 1px solid #eee;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 15px;-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .order-header {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .order-id {-->
+<!--            font-weight: bold;-->
+<!--            color: #ff69b4;-->
+<!--        }-->
+
+<!--        .order-status {-->
+<!--            background-color: #f0f0f0;-->
+<!--            padding: 3px 10px;-->
+<!--            border-radius: 20px;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .order-details {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(3, 1fr);-->
+<!--            gap: 15px;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .no-orders {-->
+<!--            text-align: center;-->
+<!--            padding: 30px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <header>-->
+<!--        <div class="container header-content">-->
+<!--            <div class="logo">Блестяшки AgroDelivery</div>-->
+<!--            <button class="back-btn" id="backBtn">← На главную</button>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--    <div class="container">-->
+<!--        <div class="tabs">-->
+<!--            <div class="tab active" data-tab="new-order">Новый заказ</div>-->
+<!--            <div class="tab" data-tab="my-orders">Мои заказы</div>-->
+<!--        </div>-->
+
+<!--        <div class="tab-content active" id="new-order">-->
+<!--            <div class="order-form">-->
+<!--                <h2>Создать новый заказ</h2>-->
+<!--                <form id="createOrderForm">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">Вес заказа (кг)</label>-->
+<!--                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">Район доставки</label>-->
+<!--                        <input type="number" class="form-control" id="orderRegion" min="1" required>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group delivery-hours">-->
+<!--                        <label class="form-label">Время доставки</label>-->
+<!--                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>-->
+<!--                        <div class="hours-list" id="hoursList">-->
+<!--                            <div class="hour-item">-->
+<!--                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>-->
+<!--                                <button type="button" class="remove-hour">×</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <button type="submit" class="submit-btn">Создать заказ</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="tab-content" id="my-orders">-->
+<!--            <div class="orders-list">-->
+<!--                <h2>Мои заказы</h2>-->
+<!--                <div id="ordersContainer">-->
+<!--                    <div class="no-orders">У вас пока нет заказов</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        // Здесь будет JavaScript для взаимодействия с API-->
+
+<!--&lt;!&ndash;        document.getElementById('backBtn').addEventListener('click', () => {&ndash;&gt;-->
+<!--&lt;!&ndash;            window.location.href = '/';&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+<!--        // Управление табами-->
+<!--        document.querySelectorAll('.tab').forEach(tab => {-->
+<!--            tab.addEventListener('click', () => {-->
+<!--                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));-->
+<!--                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));-->
+
+<!--                tab.classList.add('active');-->
+<!--                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');-->
+
+<!--                if (tab.getAttribute('data-tab') === 'my-orders') {-->
+<!--                    loadCustomerOrders();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+<!--        // Управление временем доставки-->
+<!--        document.getElementById('addHourBtn').addEventListener('click', () => {-->
+<!--            const hoursList = document.getElementById('hoursList');-->
+<!--            const newHourItem = document.createElement('div');-->
+<!--            newHourItem.className = 'hour-item';-->
+<!--            newHourItem.innerHTML = `-->
+<!--                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>-->
+<!--                <button type="button" class="remove-hour">×</button>-->
+<!--            `;-->
+<!--            hoursList.appendChild(newHourItem);-->
+
+<!--            newHourItem.querySelector('.remove-hour').addEventListener('click', () => {-->
+<!--                if (hoursList.children.length > 1) {-->
+<!--                    hoursList.removeChild(newHourItem);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+<!--        // Инициализация первого кнопки удаления-->
+<!--        document.querySelector('.remove-hour').addEventListener('click', (e) => {-->
+<!--            const hoursList = document.getElementById('hoursList');-->
+<!--            if (hoursList.children.length > 1) {-->
+<!--                hoursList.removeChild(e.target.parentNode);-->
+<!--            }-->
+<!--        });-->
+
+<!--        // Создание заказа-->
+<!--        document.getElementById('createOrderForm').addEventListener('submit', async (e) => {-->
+<!--            e.preventDefault();-->
+
+<!--            const weight = parseFloat(document.getElementById('orderWeight').value);-->
+<!--            const region = parseInt(document.getElementById('orderRegion').value);-->
+
+<!--            const deliveryHours = [];-->
+<!--            document.querySelectorAll('.hour-input').forEach(input => {-->
+<!--                if (input.value) deliveryHours.push(input.value);-->
+<!--            });-->
+
+<!--            try {-->
+<!--                // В реальном приложении здесь будет запрос к API-->
+<!--                // const response = await fetch('/api/orders', {-->
+<!--                //     method: 'POST',-->
+<!--                //     headers: { 'Content-Type': 'application/json' },-->
+<!--                //     body: JSON.stringify({-->
+<!--                //         data: [{-->
+<!--                //             weight: weight,-->
+<!--                //             region: region,-->
+<!--                //             delivery_hours: deliveryHours-->
+<!--                //         }]-->
+<!--                //     })-->
+<!--                // });-->
+<!--                // const data = await response.json();-->
+
+<!--                // Пример успешного ответа-->
+<!--                const data = {-->
+<!--                    orders: [{ id: Math.floor(Math.random() * 1000) + 1000 }]-->
+<!--                };-->
+
+<!--                alert(`Заказ #${data.orders[0].id} успешно создан!`);-->
+<!--                document.getElementById('createOrderForm').reset();-->
+
+<!--                // Оставляем только одно поле времени доставки-->
+<!--                const hoursList = document.getElementById('hoursList');-->
+<!--                while (hoursList.children.length > 1) {-->
+<!--                    hoursList.removeChild(hoursList.lastChild);-->
+<!--                }-->
+<!--                hoursList.querySelector('.hour-input').value = '';-->
+
+<!--                // Переключаемся на вкладку с заказами и обновляем список-->
+<!--                document.querySelector('.tab[data-tab="my-orders"]').click();-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка создания заказа:', error);-->
+<!--                alert('Не удалось создать заказ');-->
+<!--            }-->
+<!--        });-->
+
+<!--        // Загрузка заказов покупателя-->
+<!--        async function loadCustomerOrders() {-->
+<!--            try {-->
+<!--                // В реальном приложении здесь будет запрос к API-->
+<!--                // const response = await fetch('/api/orders?customer_id=1');-->
+<!--                // const orders = await response.json();-->
+
+<!--                // Пример данных для демонстрации-->
+<!--                const orders = [-->
+<!--                    {-->
+<!--                        order_id: 123,-->
+<!--                        weight: 3.5,-->
+<!--                        region: 12,-->
+<!--                        delivery_hours: ["10:00-12:00", "15:00-18:00"],-->
+<!--                        status: "В процессе",-->
+<!--                        courier_id: 456-->
+<!--                    },-->
+<!--                    {-->
+<!--                        order_id: 124,-->
+<!--                        weight: 2.1,-->
+<!--                        region: 5,-->
+<!--                        delivery_hours: ["09:00-11:00"],-->
+<!--                        status: "Завершен",-->
+<!--                        courier_id: 789-->
+<!--                    }-->
+<!--                ];-->
+
+<!--                renderOrders(orders);-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка загрузки заказов:', error);-->
+<!--            }-->
+<!--        }-->
+
+<!--        function renderOrders(orders) {-->
+<!--            const container = document.getElementById('ordersContainer');-->
+
+<!--            if (orders.length === 0) {-->
+<!--                container.innerHTML = '<div class="no-orders">У вас пока нет заказов</div>';-->
+<!--                return;-->
+<!--            }-->
+
+<!--            container.innerHTML = '';-->
+
+<!--            orders.forEach(order => {-->
+<!--                const orderCard = document.createElement('div');-->
+<!--                orderCard.className = 'order-card';-->
+
+<!--                orderCard.innerHTML = `-->
+<!--                    <div class="order-header">-->
+<!--                        <div class="order-id">Заказ #${order.order_id}</div>-->
+<!--                        <div class="order-status">${order.status}</div>-->
+<!--                    </div>-->
+<!--                    <div class="order-details">-->
+<!--                        <div>-->
+<!--                            <div class="form-label">Вес</div>-->
+<!--                            <div>${order.weight} кг</div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <div class="form-label">Район</div>-->
+<!--                            <div>${order.region}</div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <div class="form-label">Время доставки</div>-->
+<!--                            <div>${order.delivery_hours.join(', ')}</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    ${order.courier_id ? `<div><strong>Курьер:</strong> #${order.courier_id}</div>` : ''}-->
+<!--                `;-->
+
+<!--                container.appendChild(orderCard);-->
+<!--            });-->
+<!--        }-->
+<!--        document.getElementById('backBtn').addEventListener('click', () => {-->
+<!--        window.location.href = '/index.html';  // Изменено с '/'-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Покупатель - Блестяшки AgroDelivery</title>
+    <link rel="stylesheet" href="/static/css/customer.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Блестяшки AgroDelivery</div>
+            <button class="back-btn" id="backBtn">← На главную</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="new-order">Новый заказ</div>
+            <div class="tab" data-tab="my-orders">Мои заказы</div>
+        </div>
+
+        <div class="tab-content active" id="new-order">
+            <div class="order-form">
+                <h2>Создать новый заказ</h2>
+                <form id="createOrderForm">
+                    <div class="form-group">
+                        <label class="form-label">Вес заказа (кг)</label>
+                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Район доставки</label>
+                        <input type="number" class="form-control" id="orderRegion" min="1" required>
+                    </div>
+
+                    <div class="form-group delivery-hours">
+                        <label class="form-label">Время доставки</label>
+                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>
+                        <div class="hours-list" id="hoursList">
+                            <div class="hour-item">
+                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>
+                                <button type="button" class="remove-hour">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Создать заказ</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="tab-content" id="my-orders">
+            <div class="orders-list">
+                <h2>Мои заказы</h2>
+                <div id="ordersContainer">
+                    <div class="no-orders">У вас пока нет заказов</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/scripts/customer.js"></script>
+</body>
+</html>

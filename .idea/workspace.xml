@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="" />
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="файлики">
+      <change afterPath="$PROJECT_DIR$/static/css/courier.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/pokupatel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/scripts/courier.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/scripts/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/scripts/pokupatel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/2,.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pokupatel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/4.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +43,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -52,6 +66,39 @@
       <option name="presentableId" value="Default" />
       <updated>1749213535070</updated>
     </task>
+    <task id="LOCAL-00001" summary="создала папочки">
+      <option name="closed" value="true" />
+      <created>1749214588868</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749214588868</updated>
+    </task>
+    <task id="LOCAL-00002" summary="файлики">
+      <option name="closed" value="true" />
+      <created>1749214879164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749214879164</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="создала папочки" />
+    <MESSAGE value="файлики" />
+    <option name="LAST_COMMIT_MESSAGE" value="файлики" />
   </component>
 </project>

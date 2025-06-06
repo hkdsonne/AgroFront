@@ -1,0 +1,499 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Курьер - Блестяшки AgroDelivery</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background-color: #f8f9fa;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #ff69b4;-->
+<!--            color: white;-->
+<!--            padding: 15px 0;-->
+<!--            margin-bottom: 30px;-->
+<!--            box-shadow: 0 2px 5px rgba(0,0,0,0.1);-->
+<!--        }-->
+
+<!--        .header-content {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+<!--        .logo {-->
+<!--            font-size: 24px;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .back-btn {-->
+<!--            background: none;-->
+<!--            border: none;-->
+<!--            color: white;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .courier-info {-->
+<!--            background: white;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 20px;-->
+<!--            margin-bottom: 20px;-->
+<!--            box-shadow: 0 2px 10px rgba(0,0,0,0.05);-->
+<!--        }-->
+
+<!--        .info-grid {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(3, 1fr);-->
+<!--            gap: 20px;-->
+<!--        }-->
+
+<!--        .info-item {-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .info-label {-->
+<!--            font-weight: bold;-->
+<!--            color: #666;-->
+<!--            margin-bottom: 5px;-->
+<!--        }-->
+
+<!--        .info-value {-->
+<!--            font-size: 18px;-->
+<!--        }-->
+
+<!--        .orders-section {-->
+<!--            background: white;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 20px;-->
+<!--            box-shadow: 0 2px 10px rgba(0,0,0,0.05);-->
+<!--        }-->
+
+<!--        .section-title {-->
+<!--            font-size: 20px;-->
+<!--            margin-bottom: 20px;-->
+<!--            color: #ff69b4;-->
+<!--            border-bottom: 2px solid #ff69b4;-->
+<!--            padding-bottom: 10px;-->
+<!--        }-->
+
+<!--        .order-card {-->
+<!--            border: 1px solid #eee;-->
+<!--            border-radius: 8px;-->
+<!--            padding: 15px;-->
+<!--            margin-bottom: 15px;-->
+<!--            transition: all 0.3s;-->
+<!--        }-->
+
+<!--        .order-card:hover {-->
+<!--            box-shadow: 0 5px 15px rgba(0,0,0,0.1);-->
+<!--        }-->
+
+<!--        .order-header {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .order-id {-->
+<!--            font-weight: bold;-->
+<!--            color: #ff69b4;-->
+<!--        }-->
+
+<!--        .order-status {-->
+<!--            background-color: #f0f0f0;-->
+<!--            padding: 3px 10px;-->
+<!--            border-radius: 20px;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .order-details {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(3, 1fr);-->
+<!--            gap: 15px;-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+
+<!--        .order-actions {-->
+<!--            display: flex;-->
+<!--            justify-content: flex-end;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .btn {-->
+<!--            padding: 8px 15px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            font-weight: bold;-->
+<!--            transition: all 0.3s;-->
+<!--        }-->
+
+<!--        .btn-primary {-->
+<!--            background-color: #ff69b4;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .btn-primary:hover {-->
+<!--            background-color: #e6499e;-->
+<!--        }-->
+
+<!--        .btn-secondary {-->
+<!--            background-color: #f0f0f0;-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        .btn-secondary:hover {-->
+<!--            background-color: #e0e0e0;-->
+<!--        }-->
+
+<!--        .no-orders {-->
+<!--            text-align: center;-->
+<!--            padding: 30px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <header>-->
+<!--        <div class="container header-content">-->
+<!--            <div class="logo">Блестяшки AgroDelivery</div>-->
+<!--            <button class="back-btn" id="backBtn">← На главную</button>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--    <div class="container">-->
+<!--        <div class="courier-info">-->
+<!--            <h2>Информация о курьере</h2>-->
+<!--            <div class="info-grid">-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">ID курьера</div>-->
+<!--                    <div class="info-value" id="courierId">-</div>-->
+<!--                </div>-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">Тип курьера</div>-->
+<!--                    <div class="info-value" id="courierType">-</div>-->
+<!--                </div>-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">Районы работы</div>-->
+<!--                    <div class="info-value" id="courierRegions">-</div>-->
+<!--                </div>-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">График работы</div>-->
+<!--                    <div class="info-value" id="courierHours">-</div>-->
+<!--                </div>-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">Рейтинг</div>-->
+<!--                    <div class="info-value" id="courierRating">-</div>-->
+<!--                </div>-->
+<!--                <div class="info-item">-->
+<!--                    <div class="info-label">Заработок</div>-->
+<!--                    <div class="info-value" id="courierEarnings">-</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="orders-section">-->
+<!--            <h3 class="section-title">Текущие заказы</h3>-->
+<!--            <div id="currentOrders">-->
+<!--                <div class="no-orders">Нет текущих заказов</div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="orders-section">-->
+<!--            <h3 class="section-title">Доступные заказы</h3>-->
+<!--            <div class="order-actions">-->
+<!--                <button class="btn btn-primary" id="assignOrdersBtn">Назначить заказы</button>-->
+<!--            </div>-->
+<!--            <div id="availableOrders">-->
+<!--                <div class="no-orders">Нет доступных заказов</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <script>-->
+<!--        // Здесь будет JavaScript для взаимодействия с API-->
+
+<!--&lt;!&ndash;        document.getElementById('backBtn').addEventListener('click', () => {&ndash;&gt;-->
+<!--&lt;!&ndash;            window.location.href = '/';&ndash;&gt;-->
+<!--&lt;!&ndash;        });&ndash;&gt;-->
+
+<!--        // Загрузка данных курьера-->
+<!--        async function loadCourierData() {-->
+<!--            try {-->
+<!--                // В реальном приложении здесь будет запрос к API-->
+<!--                // const response = await fetch('/api/couriers/1');-->
+<!--                // const data = await response.json();-->
+
+<!--                // Пример данных для демонстрации-->
+<!--                const data = {-->
+<!--                    courier_id: 123,-->
+<!--                    courier_type: "car",-->
+<!--                    regions: [12, 22, 33],-->
+<!--                    working_hours: ["09:00-13:00", "14:00-18:00"],-->
+<!--                    rating: 4.8,-->
+<!--                    earnings: 12500-->
+<!--                };-->
+
+<!--                document.getElementById('courierId').textContent = data.courier_id;-->
+<!--                document.getElementById('courierType').textContent = getCourierTypeName(data.courier_type);-->
+<!--                document.getElementById('courierRegions').textContent = data.regions.join(', ');-->
+<!--                document.getElementById('courierHours').textContent = data.working_hours.join(', ');-->
+<!--                document.getElementById('courierRating').textContent = data.rating || 'Нет данных';-->
+<!--                document.getElementById('courierEarnings').textContent = `${data.earnings} руб.`;-->
+
+<!--                // Загрузка заказов-->
+<!--                loadOrders();-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка загрузки данных:', error);-->
+<!--            }-->
+<!--        }-->
+
+<!--        function getCourierTypeName(type) {-->
+<!--            const types = {-->
+<!--                'foot': 'Пеший',-->
+<!--                'bike': 'Велокурьер',-->
+<!--                'car': 'Автомобиль'-->
+<!--            };-->
+<!--            return types[type] || type;-->
+<!--        }-->
+
+<!--        async function loadOrders() {-->
+<!--            try {-->
+<!--                // В реальном приложении здесь будут запросы к API-->
+<!--                // const currentResponse = await fetch('/api/orders/assigned?courier_id=123');-->
+<!--                // const availableResponse = await fetch('/api/orders/available');-->
+
+<!--                // Пример данных для демонстрации-->
+<!--                const currentOrders = [-->
+<!--                    {-->
+<!--                        order_id: 456,-->
+<!--                        weight: 3.5,-->
+<!--                        region: 12,-->
+<!--                        delivery_hours: ["10:00-12:00", "15:00-18:00"],-->
+<!--                        status: "В процессе"-->
+<!--                    },-->
+<!--                    {-->
+<!--                        order_id: 789,-->
+<!--                        weight: 8.2,-->
+<!--                        region: 22,-->
+<!--                        delivery_hours: ["09:00-11:00"],-->
+<!--                        status: "В процессе"-->
+<!--                    }-->
+<!--                ];-->
+
+<!--                const availableOrders = [-->
+<!--                    {-->
+<!--                        order_id: 321,-->
+<!--                        weight: 2.1,-->
+<!--                        region: 33,-->
+<!--                        delivery_hours: ["11:00-13:00"]-->
+<!--                    },-->
+<!--                    {-->
+<!--                        order_id: 654,-->
+<!--                        weight: 5.7,-->
+<!--                        region: 12,-->
+<!--                        delivery_hours: ["14:00-16:00"]-->
+<!--                    }-->
+<!--                ];-->
+
+<!--                renderOrders(currentOrders, 'currentOrders');-->
+<!--                renderOrders(availableOrders, 'availableOrders');-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка загрузки заказов:', error);-->
+<!--            }-->
+<!--        }-->
+
+<!--        function renderOrders(orders, containerId) {-->
+<!--            const container = document.getElementById(containerId);-->
+
+<!--            if (orders.length === 0) {-->
+<!--                container.innerHTML = '<div class="no-orders">Нет заказов</div>';-->
+<!--                return;-->
+<!--            }-->
+
+<!--            container.innerHTML = '';-->
+
+<!--            orders.forEach(order => {-->
+<!--                const orderCard = document.createElement('div');-->
+<!--                orderCard.className = 'order-card';-->
+
+<!--                let actions = '';-->
+<!--                if (containerId === 'currentOrders') {-->
+<!--                    actions = `-->
+<!--                        <div class="order-actions">-->
+<!--                            <button class="btn btn-primary complete-btn" data-order="${order.order_id}">Завершить</button>-->
+<!--                        </div>-->
+<!--                    `;-->
+<!--                }-->
+
+<!--                orderCard.innerHTML = `-->
+<!--                    <div class="order-header">-->
+<!--                        <div class="order-id">Заказ #${order.order_id}</div>-->
+<!--                        ${order.status ? `<div class="order-status">${order.status}</div>` : ''}-->
+<!--                    </div>-->
+<!--                    <div class="order-details">-->
+<!--                        <div>-->
+<!--                            <div class="info-label">Вес</div>-->
+<!--                            <div>${order.weight} кг</div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <div class="info-label">Район</div>-->
+<!--                            <div>${order.region}</div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <div class="info-label">Время доставки</div>-->
+<!--                            <div>${order.delivery_hours.join(', ')}</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    ${actions}-->
+<!--                `;-->
+
+<!--                container.appendChild(orderCard);-->
+<!--            });-->
+
+<!--            // Добавляем обработчики для кнопок завершения заказа-->
+<!--            if (containerId === 'currentOrders') {-->
+<!--                document.querySelectorAll('.complete-btn').forEach(btn => {-->
+<!--                    btn.addEventListener('click', async (e) => {-->
+<!--                        const orderId = e.target.getAttribute('data-order');-->
+<!--                        await completeOrder(orderId);-->
+<!--                    });-->
+<!--                });-->
+<!--            }-->
+<!--        }-->
+
+<!--        async function completeOrder(orderId) {-->
+<!--            try {-->
+<!--                // В реальном приложении здесь будет запрос к API-->
+<!--                // await fetch('/api/orders/complete', {-->
+<!--                //     method: 'POST',-->
+<!--                //     headers: { 'Content-Type': 'application/json' },-->
+<!--                //     body: JSON.stringify({-->
+<!--                //         courier_id: document.getElementById('courierId').textContent,-->
+<!--                //         order_id: orderId,-->
+<!--                //         complete_time: new Date().toISOString()-->
+<!--                //     })-->
+<!--                // });-->
+
+<!--                alert(`Заказ #${orderId} завершен`);-->
+<!--                loadCourierData(); // Обновляем данные-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка завершения заказа:', error);-->
+<!--                alert('Не удалось завершить заказ');-->
+<!--            }-->
+<!--        }-->
+
+<!--        document.getElementById('assignOrdersBtn').addEventListener('click', async () => {-->
+<!--            try {-->
+<!--                // В реальном приложении здесь будет запрос к API-->
+<!--                // await fetch('/api/orders/assign', {-->
+<!--                //     method: 'POST',-->
+<!--                //     headers: { 'Content-Type': 'application/json' },-->
+<!--                //     body: JSON.stringify({-->
+<!--                //         courier_id: document.getElementById('courierId').textContent-->
+<!--                //     })-->
+<!--                // });-->
+
+<!--                alert('Заказы назначены');-->
+<!--                loadCourierData(); // Обновляем данные-->
+<!--            } catch (error) {-->
+<!--                console.error('Ошибка назначения заказов:', error);-->
+<!--                alert('Не удалось назначить заказы');-->
+<!--            }-->
+<!--        });-->
+
+<!--        // Загружаем данные при загрузке страницы-->
+<!--        window.addEventListener('DOMContentLoaded', loadCourierData);-->
+
+<!--        document.getElementById('backBtn').addEventListener('click', () => {-->
+<!--        window.location.href = '/index.html';  // Изменено с '/'-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курьер - Блестяшки AgroDelivery</title>
+    <link rel="stylesheet" href="/static/css/courier.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Блестяшки AgroDelivery</div>
+            <button class="back-btn" id="backBtn">← На главную</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="courier-info">
+            <h2>Информация о курьере</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">ID курьера</div>
+                    <div class="info-value" id="courierId">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Тип курьера</div>
+                    <div class="info-value" id="courierType">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Районы работы</div>
+                    <div class="info-value" id="courierRegions">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">График работы</div>
+                    <div class="info-value" id="courierHours">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Рейтинг</div>
+                    <div class="info-value" id="courierRating">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Заработок</div>
+                    <div class="info-value" id="courierEarnings">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="orders-section">
+            <h3 class="section-title">Текущие заказы</h3>
+            <div id="currentOrders">
+                <div class="no-orders">Нет текущих заказов</div>
+            </div>
+        </div>
+
+        <div class="orders-section">
+            <h3 class="section-title">Доступные заказы</h3>
+            <div class="order-actions">
+                <button class="btn btn-primary" id="assignOrdersBtn">Назначить заказы</button>
+            </div>
+            <div id="availableOrders">
+                <div class="no-orders">Нет доступных заказов</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/scripts/courier.js"></script>
+</body>
+</html>
