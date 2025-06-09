@@ -3,9 +3,23 @@ import uvicorn
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 import os
 # uvicorn main:app --reload
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://127.0.0.1:8000",  # Разрешаем фронтенд на порту 8001
+        "http://localhost:8000",   # Альтернативный адрес
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["*"]
+)
 
 # Настройка путей
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +52,8 @@ async def serve_static(file_path: str):
     if os.path.exists(static_file):
         return FileResponse(static_file)
     return {"error": "File not found"}
+
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8001, reload=True)  # <- Исправлено!

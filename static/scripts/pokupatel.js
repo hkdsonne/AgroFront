@@ -166,6 +166,9 @@
 //});
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    checkBackendConnection(); // добавила 09.06!!!!
+
     // Управление табами
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -215,40 +218,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Создание заказа (с использованием Promise)
-    document.getElementById('createOrderForm').addEventListener('submit', function(e) {
+    // Создание заказа
+    document.getElementById('createOrderForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        const weight = parseFloat(document.getElementById('orderWeight').value);
-        const region = parseInt(document.getElementById('orderRegion').value);
+        // Показываем индикатор загрузки
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Создание...';
 
-        const deliveryHours = [];
-        document.querySelectorAll('.hour-input').forEach(function(input) {
-            if (input.value) deliveryHours.push(input.value);
-        });
+        try {
+            const weight = parseFloat(document.getElementById('orderWeight').value);
+            const region = parseInt(document.getElementById('orderRegion').value);
 
-        fetch('http://127.0.0.1:8000/orders/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                weight: weight,
-                region: region,
-                delivery_hours: deliveryHours,
-            }),
-        })
-        .then(response => {
+            const deliveryHours = [];
+            document.querySelectorAll('.hour-input').forEach(function(input) {
+                if (input.value) deliveryHours.push(input.value);
+            });
+
+            // Валидация данных
+            if (isNaN(weight) throw new Error('Укажите корректный вес');
+            if (isNaN(region)) throw new Error('Укажите корректный район');
+            if (deliveryHours.length === 0) throw new Error('Укажите хотя бы один интервал доставки');
+
+            const response = await fetch('http://127.0.0.1:8000/orders/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    data: [{
+                        order_id: Math.floor(Math.random() * 900000) + 100000,
+                        weight: weight,
+                        region: region,
+                        delivery_hours: deliveryHours
+                    }]
+                }),
+            });
+
+            const data = await response.json();
+
             if (!response.ok) {
-                throw new Error('Ошибка сервера');
+                throw new Error(data.detail || 'Не удалось создать заказ');
             }
-            return response.json();
-        })
-        .then(data => {
-            alert(`Заказ #${data.order_id} успешно создан!`);
-            document.getElementById('createOrderForm').reset();
 
-            // Очистка полей времени доставки
+            showNotification(`Заказ #${data.orders[0].id} успешно создан!`, 'success');
+
+            // Очистка формы
+            document.getElementById('createOrderForm').reset();
             const hoursList = document.getElementById('hoursList');
             while (hoursList.children.length > 1) {
                 hoursList.removeChild(hoursList.lastChild);
@@ -257,14 +274,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 hoursList.querySelector('.hour-input').value = '';
             }
 
-            // Переключение на вкладку заказов
-            document.querySelector('.tab[data-tab="my-orders"]').click();
-        })
-        .catch(error => {
+            // Обновляем список заказов
+            if (document.querySelector('.tab[data-tab="my-orders"].active')) {
+                loadCustomerOrders();
+            }
+
+        } catch (error) {
             console.error('Ошибка создания заказа:', error);
-            alert('Не удалось создать заказ: ' + error.message);
-        });
+            showNotification(`Не удалось создать заказ: ${error.message}`, 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Создать заказ';
+        }
     });
+
+    // Функция проверки подключения к бэкенду
+    function checkBackendConnection() {
+        const connectionStatus = document.getElementById('connectionStatus');
+        try {
+            // Проверяем оба типа запросов (GET и OPTIONS)
+            const response = await fetch('http://127.0.0.1:8000/orders/', {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                connectionStatus.textContent = '✓ Подключение с бэкендом установлено';
+                connectionStatus.className = 'connection-status connected';
+            } else {
+                connectionStatus.textContent = '✗ Нет подключения к бэкенду';
+                connectionStatus.className = 'connection-status disconnected';
+            }
+        } catch (error) {
+            console.error('Ошибка подключения:', error);
+            connectionStatus.textContent = '✗ Ошибка подключения к бэкенду';
+            connectionStatus.className = 'connection-status disconnected';
+        }
+    }
+
+    // Функция показа уведомлений
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = 'Закрыть';
+        closeBtn.className = 'close-notification';
+        closeBtn.onclick = () => notification.remove();
+
+        notification.appendChild(closeBtn);
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), 500);
+        }, 5000);
+    }
 
     // Загрузка заказов покупателя (с использованием Promise)
     function loadCustomerOrders() {
