@@ -8,18 +8,18 @@ import os
 # uvicorn main:app --reload
 app = FastAPI()
 
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:8000",  # Разрешаем фронтенд на порту 8001
-        "http://localhost:8000",   # Альтернативный адрес
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["*"]
-)
+#
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "http://127.0.0.1:8000",  # Разрешаем фронтенд на порту 8001
+#         "http://localhost:8000",   # Альтернативный адрес
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+#     expose_headers=["*"]
+# )
 
 # Настройка путей
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

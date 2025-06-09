@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="ПОЧИНИЛИ ТЕПЕРЬ НИКАКИЕ пидантики не мешают">
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="меняла форму покупателя + попытка подключения к бэку">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/courier.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/courier.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/pokupatel.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/pokupatel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/pokupatel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/pokupatel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/courier.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courier.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pokupatel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pokupatel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749464233014</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="меняла форму покупателя + попытка подключения к бэку">
+      <option name="closed" value="true" />
+      <created>1749472274062</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749472274062</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -188,6 +198,7 @@
     <MESSAGE value="Причесала главную форму точнее ее код, также разобралась с курьерами (больше не пакостят)" />
     <MESSAGE value="теперь есть по-божески написанные три странички, даже код почти причесан" />
     <MESSAGE value="ПОЧИНИЛИ ТЕПЕРЬ НИКАКИЕ пидантики не мешают" />
-    <option name="LAST_COMMIT_MESSAGE" value="ПОЧИНИЛИ ТЕПЕРЬ НИКАКИЕ пидантики не мешают" />
+    <MESSAGE value="меняла форму покупателя + попытка подключения к бэку" />
+    <option name="LAST_COMMIT_MESSAGE" value="меняла форму покупателя + попытка подключения к бэку" />
   </component>
 </project>

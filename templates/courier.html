@@ -1,15 +1,89 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Информация о курьере</title>-->
+<!--    <link rel="stylesheet" href="/static/css/courier.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <header class="header">-->
+<!--        <h1>Блестяшки AgroDelivery</h1>-->
+<!--        <a href="/" class="back-button">← На главную</a>-->
+<!--    </header>-->
+<!--    <div class="container">-->
+<!--        <div class="courier-info">-->
+<!--            <h2>Информация о курьере</h2>-->
+<!--            <div class="info-grid">-->
+<!--                <div>-->
+<!--                    <p><strong>ID курьера</strong></p>-->
+<!--                    <p>123</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p><strong>Тип курьера</strong></p>-->
+<!--                    <p>Автомобиль</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p><strong>Районы работы</strong></p>-->
+<!--                    <p>12, 22, 33</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p><strong>График работы</strong></p>-->
+<!--                    <p>09:00-13:00, 14:00-18:00</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p><strong>Рейтинг</strong></p>-->
+<!--                    <p>4.8</p>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p><strong>Заработок</strong></p>-->
+<!--                    <p>12500 руб.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="orders">-->
+<!--            <h2>Текущие заказы</h2>-->
+<!--            <div class="order">-->
+<!--                <div class="order-header">-->
+<!--                    <h3>Заказ #456</h3>-->
+<!--                    <span class="status">В процессе</span>-->
+<!--                </div>-->
+<!--                <div class="order-details">-->
+<!--                    <p><strong>Вес</strong>: 3.5 кг</p>-->
+<!--                    <p><strong>Район</strong>: 12</p>-->
+<!--                    <p><strong>Время доставки</strong>: 10:00-12:00, 15:00-18:00</p>-->
+<!--                </div>-->
+<!--                <button class="complete-button">Завершить</button>-->
+<!--            </div>-->
+<!--            <div class="order">-->
+<!--                <div class="order-header">-->
+<!--                    <h3>Заказ #789</h3>-->
+<!--                    <span class="status">В процессе</span>-->
+<!--                </div>-->
+<!--                <div class="order-details">-->
+<!--                    <p><strong>Вес</strong>: 5 кг</p>-->
+<!--                    <p><strong>Район</strong>: 22</p>-->
+<!--                    <p><strong>Время доставки</strong>: 10:00-12:00, 15:00-18:00</p>-->
+<!--                </div>-->
+<!--                <button class="complete-button">Завершить</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <script src="/static/scripts/courier.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Информация о курьере</title>
+    <title>Панель курьера</title>
     <link rel="stylesheet" href="/static/css/courier.css">
 </head>
 <body>
     <header class="header">
         <h1>Блестяшки AgroDelivery</h1>
-        <a href="/" class="back-button">← На главную</a>
+        <a href="/courier_login" class="back-button">← Выйти</a>
     </header>
     <div class="container">
         <div class="courier-info">
@@ -17,58 +91,45 @@
             <div class="info-grid">
                 <div>
                     <p><strong>ID курьера</strong></p>
-                    <p>123</p>
+                    <p id="courier-id">Загрузка...</p>
                 </div>
                 <div>
                     <p><strong>Тип курьера</strong></p>
-                    <p>Автомобиль</p>
+                    <p id="courier-type">Загрузка...</p>
                 </div>
                 <div>
                     <p><strong>Районы работы</strong></p>
-                    <p>12, 22, 33</p>
+                    <p id="courier-districts">Загрузка...</p>
                 </div>
                 <div>
                     <p><strong>График работы</strong></p>
-                    <p>09:00-13:00, 14:00-18:00</p>
+                    <p id="courier-schedule">Загрузка...</p>
                 </div>
                 <div>
                     <p><strong>Рейтинг</strong></p>
-                    <p>4.8</p>
+                    <p id="courier-rating">Загрузка...</p>
                 </div>
                 <div>
                     <p><strong>Заработок</strong></p>
-                    <p>12500 руб.</p>
+                    <p id="courier-earnings">Загрузка...</p>
                 </div>
             </div>
         </div>
+
+        <div class="courier-info">
+            <h2>Рейтинг курьеров</h2>
+            <div id="courier-ratings">
+                <p>Загрузка рейтингов...</p>
+            </div>
+        </div>
+
         <div class="orders">
             <h2>Текущие заказы</h2>
-            <div class="order">
-                <div class="order-header">
-                    <h3>Заказ #456</h3>
-                    <span class="status">В процессе</span>
-                </div>
-                <div class="order-details">
-                    <p><strong>Вес</strong>: 3.5 кг</p>
-                    <p><strong>Район</strong>: 12</p>
-                    <p><strong>Время доставки</strong>: 10:00-12:00, 15:00-18:00</p>
-                </div>
-                <button class="complete-button">Завершить</button>
-            </div>
-            <div class="order">
-                <div class="order-header">
-                    <h3>Заказ #789</h3>
-                    <span class="status">В процессе</span>
-                </div>
-                <div class="order-details">
-                    <p><strong>Вес</strong>: 5 кг</p>
-                    <p><strong>Район</strong>: 22</p>
-                    <p><strong>Время доставки</strong>: 10:00-12:00, 15:00-18:00</p>
-                </div>
-                <button class="complete-button">Завершить</button>
+            <div id="orders-list">
+                <p>Загрузка заказов...</p>
             </div>
         </div>
     </div>
-    <script src="/static/scripts/courier.js"></script>
+    <script src="/static/scripts/courier_dashboard.js"></script>
 </body>
 </html>

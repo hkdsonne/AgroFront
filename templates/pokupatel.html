@@ -1,3 +1,69 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Покупатель - Блестяшки AgroDelivery</title>-->
+<!--    <link rel="stylesheet" href="/static/css/pokupatel.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <header>-->
+<!--        <div class="container header-content">-->
+<!--            <div class="logo">Блестяшки AgroDelivery</div>-->
+<!--            <button class="back-btn" id="backBtn">← На главную</button>-->
+<!--        </div>-->
+<!--    </header>-->
+
+
+<!--    <div class="container">-->
+<!--        <div class="tabs">-->
+<!--            <div class="tab active" data-tab="new-order">Новый заказ</div>-->
+<!--            <div class="tab" data-tab="my-orders">Мои заказы</div>-->
+<!--        </div>-->
+
+<!--        <div class="tab-content active" id="new-order">-->
+<!--            <div class="order-form">-->
+<!--                <h2>Создать новый заказ</h2>-->
+<!--                <form id="createOrderForm">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">Вес заказа (кг)</label>-->
+<!--                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">Район доставки</label>-->
+<!--                        <input type="number" class="form-control" id="orderRegion" min="1" required>-->
+<!--                    </div>-->
+
+<!--                    <div class="form-group delivery-hours">-->
+<!--                        <label class="form-label">Время доставки</label>-->
+<!--                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>-->
+<!--                        <div class="hours-list" id="hoursList">-->
+<!--                            <div class="hour-item">-->
+<!--                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>-->
+<!--                                <button type="button" class="remove-hour">×</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <button type="submit" class="submit-btn">Создать заказ</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="tab-content" id="my-orders">-->
+<!--            <div class="orders-list">-->
+<!--                <h2>Мои заказы</h2>-->
+<!--                <div id="ordersContainer">-->
+<!--                    <div class="no-orders">У вас пока нет заказов</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <script src="/static/scripts/pokupatel.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -14,9 +80,6 @@
         </div>
     </header>
 
-    <!-- Добавьте после <header> и перед <div class="container"> -->
-    <div id="connectionStatus" class="connection-status">Проверка подключения...</div>
-
     <div class="container">
         <div class="tabs">
             <div class="tab active" data-tab="new-order">Новый заказ</div>
@@ -30,16 +93,19 @@
                     <div class="form-group">
                         <label class="form-label">Вес заказа (кг)</label>
                         <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>
+                        <small class="form-hint">Допустимый вес: от 0.01 до 50 кг</small>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">Район доставки</label>
                         <input type="number" class="form-control" id="orderRegion" min="1" required>
+                        <small class="form-hint">Район должен быть положительным целым числом</small>
                     </div>
 
                     <div class="form-group delivery-hours">
                         <label class="form-label">Время доставки</label>
                         <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>
+                        <small class="form-hint">Формат: HH:MM-HH:MM (например, 09:00-18:00)</small>
                         <div class="hours-list" id="hoursList">
                             <div class="hour-item">
                                 <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>

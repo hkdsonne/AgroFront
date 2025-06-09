@@ -199,7 +199,7 @@ header {
     color: #666;
 }
 /*ИЗМЕНЕНИЯ*/
-.connection-status {
+/*.connection-status {
     padding: 8px 15px;
     border-radius: 4px;
     margin: 10px 0;
@@ -266,4 +266,20 @@ header {
 @keyframes fade-out {
     from { opacity: 1; }
     to { opacity: 0; }
+}
+*/
+/* Добавим в конец файла */
+.form-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.error-message {
+    color: #dc3545;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    margin: 10px 0;
 }
