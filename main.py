@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 import os
-
+# uvicorn main:app --reload
 app = FastAPI()
 
 # Настройка путей
