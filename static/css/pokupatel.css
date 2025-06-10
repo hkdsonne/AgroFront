@@ -53,11 +53,21 @@ header {
     padding: 10px 20px;
     cursor: pointer;
     border-bottom: 3px solid transparent;
+    background-color: #ffb6c1;
+    color: white;
+    margin-right: 5px;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #ff9eb5;
 }
 
 .tab.active {
     border-bottom: 3px solid #ff69b4;
     font-weight: bold;
+    background-color: #ff8fab;
 }
 
 .tab-content {
@@ -154,125 +164,39 @@ header {
     background-color: #e6499e;
 }
 
-.orders-list {
-    background: white;
+.assign-result {
+    background-color: #f8f9fa;
     border-radius: 8px;
     padding: 20px;
+    margin-top: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: none;
 }
 
-.order-card {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px;
+.assign-time {
+    font-size: 14px;
+    color: #666;
     margin-bottom: 15px;
 }
 
-.order-header {
-    display: flex;
-    justify-content: space-between;
+.assigned-order {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
     margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.order-id {
+.assigned-order-id {
     font-weight: bold;
     color: #ff69b4;
 }
 
-.order-status {
-    background-color: #f0f0f0;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
-.order-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.no-orders {
+.no-orders-message {
     text-align: center;
-    padding: 30px;
-    color: #666;
-}
-/*ИЗМЕНЕНИЯ*/
-/*.connection-status {
-    padding: 8px 15px;
-    border-radius: 4px;
-    margin: 10px 0;
-    font-size: 14px;
-    text-align: center;
-}
-
-.connection-status.connected {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.connection-status.disconnected {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
     padding: 15px;
-    border-radius: 5px;
-    color: white;
-    max-width: 300px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    animation: slide-in 0.5s ease-out;
-}
-
-.notification.success {
-    background-color: #4CAF50;
-}
-
-.notification.error {
-    background-color: #f44336;
-}
-
-.notification.info {
-    background-color: #2196F3;
-}
-
-.close-notification {
-    float: right;
-    margin-left: 15px;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.notification.fade-out {
-    animation: fade-out 0.5s ease-out;
-}
-
-@keyframes slide-in {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-*/
-/* Добавим в конец файла */
-.form-hint {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
     color: #666;
 }
 
@@ -282,4 +206,30 @@ header {
     background-color: #f8d7da;
     border-radius: 4px;
     margin: 10px 0;
+}
+
+.complete-result {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+.complete-response {
+    font-size: 16px;
+    padding: 15px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.complete-success {
+    color: #2e7d32;
+}
+
+.complete-error {
+    color: #c62828;
+    background-color: #ffebee;
 }

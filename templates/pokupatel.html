@@ -1,3 +1,131 @@
+<!--&lt;!&ndash;&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<html lang="ru">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <title>Покупатель - Блестяшки AgroDelivery</title>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <link rel="stylesheet" href="/static/css/pokupatel.css">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <header>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="container header-content">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <div class="logo">Блестяшки AgroDelivery</div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <button class="back-btn" id="backBtn">← На главную</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </header>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="container">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="tab-content active" id="new-order">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <div class="order-form">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <h2>Создать новый заказ</h2>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <form id="createOrderForm">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="form-label">Вес заказа (кг)</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <small class="form-hint">Допустимый вес: от 0.01 до 50 кг</small>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="form-group">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="form-label">Район доставки</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <input type="number" class="form-control" id="orderRegion" min="1" required>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <small class="form-hint">Район должен быть положительным целым числом</small>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="form-group delivery-hours">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="form-label">Время доставки</label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <small class="form-hint">Формат: HH:MM-HH:MM (например, 09:00-18:00)</small>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <div class="hours-list" id="hoursList">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <div class="hour-item">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <button type="button" class="remove-hour">×</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                    <button type="submit" class="submit-btn">Создать заказ</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                </form>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <script src="/static/scripts/pokupatel.js"></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</html>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="ru">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Покупатель - Блестяшки AgroDelivery</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="/static/css/pokupatel.css">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;    <header>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="container header-content">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="logo">Блестяшки AgroDelivery</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="back-btn" id="backBtn">← На главную</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </header>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="tabs">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="tab active" data-tab="new-order">Новый заказ</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="tab" data-tab="assign-order">Поручить заказ</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="tab" data-tab="complete-order">Завершить заказ</div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="tab-content active" id="new-order">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="order-form">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h2>Создать новый заказ</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                <form id="createOrderForm">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">Вес заказа (кг)</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <small class="form-hint">Допустимый вес: от 0.01 до 50 кг</small>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">Район доставки</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="number" class="form-control" id="orderRegion" min="1" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <small class="form-hint">Район должен быть положительным целым числом</small>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="form-group delivery-hours">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">Время доставки</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <small class="form-hint">Формат: HH:MM-HH:MM (например, 09:00-18:00)</small>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="hours-list" id="hoursList">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="hour-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <button type="button" class="remove-hour">×</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <button type="submit" class="submit-btn">Создать заказ</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="tab-content" id="assign-order">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="order-form">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h2>Поручить заказ</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>Здесь будет функционал для поручения заказа</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="tab-content" id="complete-order">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="order-form">&ndash;&gt;-->
+<!--&lt;!&ndash;                <h2>Завершить заказ</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>Здесь будет функционал для завершения заказа</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="/static/scripts/pokupatel.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
 <!--<!DOCTYPE html>-->
 <!--<html lang="ru">-->
 <!--<head>-->
@@ -14,11 +142,11 @@
 <!--        </div>-->
 <!--    </header>-->
 
-
 <!--    <div class="container">-->
 <!--        <div class="tabs">-->
 <!--            <div class="tab active" data-tab="new-order">Новый заказ</div>-->
-<!--            <div class="tab" data-tab="my-orders">Мои заказы</div>-->
+<!--            <div class="tab" data-tab="assign-order">Поручить заказ</div>-->
+<!--            <div class="tab" data-tab="complete-order">Завершить заказ</div>-->
 <!--        </div>-->
 
 <!--        <div class="tab-content active" id="new-order">-->
@@ -28,16 +156,19 @@
 <!--                    <div class="form-group">-->
 <!--                        <label class="form-label">Вес заказа (кг)</label>-->
 <!--                        <input type="number" class="form-control" id="orderWeight" step="0.01" min="0.01" max="50" required>-->
+<!--                        <small class="form-hint">Допустимый вес: от 0.01 до 50 кг</small>-->
 <!--                    </div>-->
 
 <!--                    <div class="form-group">-->
 <!--                        <label class="form-label">Район доставки</label>-->
 <!--                        <input type="number" class="form-control" id="orderRegion" min="1" required>-->
+<!--                        <small class="form-hint">Район должен быть положительным целым числом</small>-->
 <!--                    </div>-->
 
 <!--                    <div class="form-group delivery-hours">-->
 <!--                        <label class="form-label">Время доставки</label>-->
 <!--                        <button type="button" class="add-hour" id="addHourBtn">Добавить временной интервал</button>-->
+<!--                        <small class="form-hint">Формат: HH:MM-HH:MM (например, 09:00-18:00)</small>-->
 <!--                        <div class="hours-list" id="hoursList">-->
 <!--                            <div class="hour-item">-->
 <!--                                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>-->
@@ -51,12 +182,30 @@
 <!--            </div>-->
 <!--        </div>-->
 
-<!--        <div class="tab-content" id="my-orders">-->
-<!--            <div class="orders-list">-->
-<!--                <h2>Мои заказы</h2>-->
-<!--                <div id="ordersContainer">-->
-<!--                    <div class="no-orders">У вас пока нет заказов</div>-->
+<!--        <div class="tab-content" id="assign-order">-->
+<!--            <div class="order-form">-->
+<!--                <h2>Поручить заказ</h2>-->
+<!--                <form id="assignOrderForm">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">ID курьера</label>-->
+<!--                        <input type="number" class="form-control" id="courierId" min="1" required>-->
+<!--                        <small class="form-hint">Введите числовой идентификатор курьера</small>-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="submit-btn">Назначить заказы</button>-->
+<!--                </form>-->
+
+<!--                <div id="assignResult" class="assign-result" style="margin-top: 20px; display: none;">-->
+<!--                    <h3>Результат назначения</h3>-->
+<!--                    <div id="assignTime" class="assign-time"></div>-->
+<!--                    <div id="assignedOrders" class="orders-list"></div>-->
 <!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="tab-content" id="complete-order">-->
+<!--            <div class="order-form">-->
+<!--                <h2>Завершить заказ</h2>-->
+<!--                <p>Здесь будет функционал для завершения заказа</p>-->
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->
@@ -81,6 +230,12 @@
     </header>
 
     <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="new-order">Новый заказ</div>
+            <div class="tab" data-tab="assign-order">Поручить заказ</div>
+            <div class="tab" data-tab="complete-order">Завершить заказ</div>
+        </div>
+
         <div class="tab-content active" id="new-order">
             <div class="order-form">
                 <h2>Создать новый заказ</h2>
@@ -111,6 +266,58 @@
 
                     <button type="submit" class="submit-btn">Создать заказ</button>
                 </form>
+            </div>
+        </div>
+
+        <div class="tab-content" id="assign-order">
+            <div class="order-form">
+                <h2>Поручить заказ</h2>
+                <form id="assignOrderForm">
+                    <div class="form-group">
+                        <label class="form-label">ID курьера</label>
+                        <input type="number" class="form-control" id="courierId" min="1" required>
+                        <small class="form-hint">Введите числовой идентификатор курьера</small>
+                    </div>
+                    <button type="submit" class="submit-btn">Назначить заказы</button>
+                </form>
+
+                <div id="assignResult" class="assign-result">
+                    <h3>Результат назначения</h3>
+                    <div id="assignTime" class="assign-time"></div>
+                    <div id="assignedOrders" class="orders-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="complete-order">
+            <div class="order-form">
+                <h2>Завершить заказ</h2>
+                <form id="completeOrderForm">
+                    <div class="form-group">
+                        <label class="form-label">ID курьера</label>
+                        <input type="number" class="form-control" id="completeCourierId" min="1" required>
+                        <small class="form-hint">Введите числовой идентификатор курьера</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">ID заказа</label>
+                        <input type="number" class="form-control" id="completeOrderId" min="1" required>
+                        <small class="form-hint">Введите числовой идентификатор заказа</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Время завершения</label>
+                        <input type="datetime-local" class="form-control" id="completeTime" required>
+                        <small class="form-hint">Укажите дату и время завершения заказа</small>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Завершить заказ</button>
+                </form>
+
+                <div id="completeResult" class="complete-result">
+                    <h3>Результат завершения</h3>
+                    <div id="completeResponse" class="complete-response"></div>
+                </div>
             </div>
         </div>
     </div>
