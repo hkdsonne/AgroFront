@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!">
-      <change beforePath="$PROJECT_DIR$/static/css/pokupatel.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/pokupatel.css" afterDir="false" />
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!">
+      <change beforePath="$PROJECT_DIR$/static/scripts/courier-auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier-auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/pokupatel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/pokupatel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pokupatel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pokupatel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749587973878</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!">
+      <option name="closed" value="true" />
+      <created>1749592542344</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1749592542344</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -222,6 +229,7 @@
     <MESSAGE value="Мучилась с CORS, оказалось все не то, помогла перезагрузка компа :)&#10;Ну и самое главное - в БД записываются созданные заказы!!!!" />
     <MESSAGE value="Сделала чтобы в БД сохранялись новые курьеры а также проверка на входе" />
     <MESSAGE value="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!" />
+    <MESSAGE value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
   </component>
 </project>

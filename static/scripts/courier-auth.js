@@ -17,6 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCourierId = null;
     let currentCourierData = null;
 
+    // Функция для проверки корректности временного интервала
+    function isValidTimeRange(timeRange) {
+        const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+        if (!timeRegex.test(timeRange)) {
+            return false;
+        }
+
+        const [startTime, endTime] = timeRange.split('-');
+        const start = startTime.split(':').map(Number);
+        const end = endTime.split(':').map(Number);
+
+        const startTotalMinutes = start[0] * 60 + start[1];
+        const endTotalMinutes = end[0] * 60 + end[1];
+
+        return endTotalMinutes > startTotalMinutes;
+    }
+
     // Обработчик для кнопки "Этот курьер надоел"
     if (closeCourierButton) {
         closeCourierButton.addEventListener('click', async () => {
@@ -24,9 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const regions = document.getElementById('edit-regions').value.split(',').map(r => parseInt(r.trim()));
             const workingHoursInputs = Array.from(document.querySelectorAll('#edit-working-hours .hour-input')).map(input => input.value);
 
-            // Проверяем, заполнены ли временные промежутки
-            const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            const validWorkingHours = workingHoursInputs.filter(wh => timeRegex.test(wh));
+            // Проверяем, заполнены ли временные промежутки и корректны ли они
+            const validWorkingHours = workingHoursInputs.filter(wh => isValidTimeRange(wh));
+
+            if (validWorkingHours.length !== workingHoursInputs.length) {
+                alert('Некорректный формат времени. Убедитесь, что время окончания больше времени начала.');
+                return;
+            }
 
             // Если нет заполненных временных промежутков, не обновляем рабочие часы
             const updateData = {
@@ -59,52 +80,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Обработчик для кнопки "Сохранить изменения"
-if (saveButton) {
-    saveButton.addEventListener('click', async () => {
-        const courierType = document.getElementById('edit-courier-type').value;
-        const regions = document.getElementById('edit-regions').value.split(',').map(r => parseInt(r.trim()));
-        const workingHoursInputs = Array.from(document.querySelectorAll('#edit-working-hours .hour-input')).map(input => input.value);
+    if (saveButton) {
+        saveButton.addEventListener('click', async () => {
+            const courierType = document.getElementById('edit-courier-type').value;
+            const regions = document.getElementById('edit-regions').value.split(',').map(r => parseInt(r.trim()));
+            const workingHoursInputs = Array.from(document.querySelectorAll('#edit-working-hours .hour-input')).map(input => input.value);
 
-        // Проверяем, заполнены ли временные промежутки
-        const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-        const validWorkingHours = workingHoursInputs.filter(wh => timeRegex.test(wh));
+            // Проверяем, заполнены ли временные промежутки и корректны ли они
+            const validWorkingHours = workingHoursInputs.filter(wh => isValidTimeRange(wh));
 
-        // Если нет заполненных временных промежутков, используем существующие
-        const workingHours = validWorkingHours.length > 0 ? validWorkingHours : currentCourierData.working_hours;
-
-        const updateData = {
-            courier_type: courierType,
-            regions: regions,
-            working_hours: workingHours
-        };
-
-        try {
-            const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updateData)
-            });
-
-            if (response.ok) {
-                alert('Данные успешно обновлены!');
-                currentCourierData.courier_type = courierType;
-                currentCourierData.regions = regions;
-                currentCourierData.working_hours = workingHours;
-                showCourierInfo(currentCourierData);
-            } else {
-                const errorData = await response.json();
-                throw new Error(errorData.detail || 'Ошибка обновления данных курьера');
+            if (validWorkingHours.length !== workingHoursInputs.length) {
+                alert('Некорректный формат времени. Убедитесь, что время окончания больше времени начала.');
+                return;
             }
-        } catch (error) {
-            console.error('Ошибка обновления данных курьера:', error);
-            alert('Не удалось обновить данные курьера: ' + error.message);
-        }
-    });
-}
 
+            // Если нет заполненных временных промежутков, используем существующие
+            const workingHours = validWorkingHours.length > 0 ? validWorkingHours : currentCourierData.working_hours;
 
+            const updateData = {
+                courier_type: courierType,
+                regions: regions,
+                working_hours: workingHours
+            };
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updateData)
+                });
+
+                if (response.ok) {
+                    alert('Данные успешно обновлены!');
+                    currentCourierData.courier_type = courierType;
+                    currentCourierData.regions = regions;
+                    currentCourierData.working_hours = workingHours;
+                    showCourierInfo(currentCourierData);
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Ошибка обновления данных курьера');
+                }
+            } catch (error) {
+                console.error('Ошибка обновления данных курьера:', error);
+                alert('Не удалось обновить данные курьера: ' + error.message);
+            }
+        });
+    }
 
     // Переключение между вкладками
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -169,9 +192,11 @@ if (saveButton) {
                 return;
             }
 
-            const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            if (!workingHoursInputs.every(wh => timeRegex.test(wh))) {
-                alert('Неверный формат времени. Используйте HH:MM-HH:MM');
+            // Проверяем, заполнены ли временные промежутки и корректны ли они
+            const validWorkingHours = workingHoursInputs.filter(wh => isValidTimeRange(wh));
+
+            if (validWorkingHours.length !== workingHoursInputs.length) {
+                alert('Некорректный формат времени. Убедитесь, что время окончания больше времени начала.');
                 return;
             }
 
@@ -207,7 +232,7 @@ if (saveButton) {
                     courier_id: courierId,
                     type: courierType,
                     regions: regions,
-                    working_hours: workingHoursInputs
+                    working_hours: validWorkingHours
                 }]
             };
 
@@ -336,7 +361,6 @@ if (saveButton) {
             });
         }
     }
-
 
     // Матричный эффект с японскими иероглифами
     const canvas = document.createElement('canvas');
