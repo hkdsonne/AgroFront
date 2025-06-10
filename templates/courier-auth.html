@@ -8,7 +8,7 @@
 </head>
 <body>
 <button class="back-button" id="back-button">← На главную</button>
-    <div class="auth-container">
+    <div class="auth-container" id="auth-container">
         <h1>Блестяшки</h1>
         <h2>AgroDelivery Service</h2>
         <div class="tabs">
@@ -16,23 +16,45 @@
             <button class="tab-button" data-tab="register">Регистрация</button>
         </div>
         <div class="tab-content active" id="login">
-            <input type="number" id="courier-id" placeholder="Введите ваш ID">
+            <div class="form-group">
+                <label for="courier-id">Введите ваш ID:</label>
+                <input type="number" id="courier-id" placeholder="Введите ваш ID">
+            </div>
             <button id="login-button">Войти</button>
         </div>
         <div class="tab-content" id="register">
-            <select id="courier-type">
-                <option value="foot">Пешком</option>
-                <option value="bike">Велосипед</option>
-                <option value="car">Автомобиль</option>
-            </select>
+            <div class="form-group">
+                <label for="courier-type">Тип курьера:</label>
+                <select id="courier-type">
+                    <option value="foot">Пешком</option>
+                    <option value="bike">Велосипед</option>
+                    <option value="car">Автомобиль</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="regions">Регионы работы (через запятую):</label>
                 <input type="text" id="regions" placeholder="1, 2, 3" value="1">
             </div>
-            <input type="text" id="working-hours" placeholder="Рабочие часы (например, 09:00-18:00)">
+            <div class="form-group delivery-hours">
+                <label class="form-label">Рабочие часы:</label>
+                <button type="button" class="add-hour" id="addWorkingHourBtn">Добавить временной интервал</button>
+                <div class="hours-list" id="workingHoursList">
+                    <!-- Временные промежутки будут добавляться сюда -->
+                </div>
+            </div>
             <button id="register-button">Зарегистрироваться</button>
         </div>
     </div>
+
+    <div class="courier-panel" id="courier-panel">
+        <h2>Страничка курьера</h2>
+        <div class="courier-info" id="courier-info">
+            <!-- Здесь будет информация о курьере -->
+        </div>
+        <button class="save-button" id="save-button">Сохранить изменения</button>
+        <button class="close-courier-button" id="close-courier-button">Этот курьер надоел</button>
+    </div>
+
     <script src="scripts/courier-auth.js"></script>
 </body>
 </html>

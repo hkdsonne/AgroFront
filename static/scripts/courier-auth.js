@@ -1,11 +1,110 @@
 document.addEventListener('DOMContentLoaded', function() {
-        // Кнопка возврата на главную
+    // Кнопка возврата на главную
     const backButton = document.getElementById('back-button');
     if (backButton) {
         backButton.addEventListener('click', () => {
             window.location.href = '/';
         });
     }
+
+    // Элементы для анимации
+    const authContainer = document.getElementById('auth-container');
+    const courierPanel = document.getElementById('courier-panel');
+    const courierInfo = document.getElementById('courier-info');
+    const closeCourierButton = document.getElementById('close-courier-button');
+    const saveButton = document.getElementById('save-button');
+
+    let currentCourierId = null;
+    let currentCourierData = null;
+
+    // Обработчик для кнопки "Этот курьер надоел"
+    if (closeCourierButton) {
+        closeCourierButton.addEventListener('click', async () => {
+            const courierType = document.getElementById('edit-courier-type').value;
+            const regions = document.getElementById('edit-regions').value.split(',').map(r => parseInt(r.trim()));
+            const workingHoursInputs = Array.from(document.querySelectorAll('#edit-working-hours .hour-input')).map(input => input.value);
+
+            // Проверяем, заполнены ли временные промежутки
+            const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            const validWorkingHours = workingHoursInputs.filter(wh => timeRegex.test(wh));
+
+            // Если нет заполненных временных промежутков, не обновляем рабочие часы
+            const updateData = {
+                courier_type: courierType,
+                regions: regions,
+                ...(validWorkingHours.length > 0 ? { working_hours: validWorkingHours } : {})
+            };
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updateData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Ошибка обновления данных курьера');
+                }
+
+                authContainer.classList.remove('hidden');
+                courierPanel.classList.remove('visible');
+            } catch (error) {
+                console.error('Ошибка обновления данных курьера:', error);
+                alert('Не удалось обновить данные курьера: ' + error.message);
+            }
+        });
+    }
+
+    // Обработчик для кнопки "Сохранить изменения"
+if (saveButton) {
+    saveButton.addEventListener('click', async () => {
+        const courierType = document.getElementById('edit-courier-type').value;
+        const regions = document.getElementById('edit-regions').value.split(',').map(r => parseInt(r.trim()));
+        const workingHoursInputs = Array.from(document.querySelectorAll('#edit-working-hours .hour-input')).map(input => input.value);
+
+        // Проверяем, заполнены ли временные промежутки
+        const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+        const validWorkingHours = workingHoursInputs.filter(wh => timeRegex.test(wh));
+
+        // Если нет заполненных временных промежутков, используем существующие
+        const workingHours = validWorkingHours.length > 0 ? validWorkingHours : currentCourierData.working_hours;
+
+        const updateData = {
+            courier_type: courierType,
+            regions: regions,
+            working_hours: workingHours
+        };
+
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
+            });
+
+            if (response.ok) {
+                alert('Данные успешно обновлены!');
+                currentCourierData.courier_type = courierType;
+                currentCourierData.regions = regions;
+                currentCourierData.working_hours = workingHours;
+                showCourierInfo(currentCourierData);
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.detail || 'Ошибка обновления данных курьера');
+            }
+        } catch (error) {
+            console.error('Ошибка обновления данных курьера:', error);
+            alert('Не удалось обновить данные курьера: ' + error.message);
+        }
+    });
+}
+
+
 
     // Переключение между вкладками
     const tabButtons = document.querySelectorAll('.tab-button');
@@ -37,8 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (response.ok) {
                     const courierData = await response.json();
-                    alert(`Добро пожаловать, курьер #${courierId}! Тип: ${courierData.courier_type}`);
-                    // Здесь можно перенаправить на страницу курьера
+                    currentCourierId = courierId;
+                    currentCourierData = courierData;
+                    showCourierInfo(courierData);
                 } else if (response.status === 404) {
                     alert(`Курьер с ID ${courierId} не найден`);
                 } else {
@@ -56,24 +156,27 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registerButton) {
         registerButton.addEventListener('click', async () => {
             const courierType = document.getElementById('courier-type').value;
-            const workingHoursInput = document.getElementById('working-hours').value;
+            const workingHoursInputs = Array.from(document.querySelectorAll('#workingHoursList .hour-input')).map(input => input.value);
+            const regionsInput = document.getElementById('regions').value;
 
-            if (!workingHoursInput) {
+            if (workingHoursInputs.length === 0) {
                 alert('Пожалуйста, укажите рабочие часы');
                 return;
             }
 
-            // Проверяем формат рабочего времени
+            if (!regionsInput) {
+                alert('Пожалуйста, укажите регионы работы');
+                return;
+            }
+
             const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
-            if (!timeRegex.test(workingHoursInput)) {
+            if (!workingHoursInputs.every(wh => timeRegex.test(wh))) {
                 alert('Неверный формат времени. Используйте HH:MM-HH:MM');
                 return;
             }
 
-            const workingHours = [workingHoursInput];
-            const regions = [1]; // По умолчанию регион 1, можно добавить поле для выбора регионов
+            const regions = regionsInput.split(',').map(r => parseInt(r.trim()));
 
-            // Генерируем случайный ID и проверяем его уникальность
             let courierId;
             let attempts = 0;
             const maxAttempts = 10;
@@ -85,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const checkResponse = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
 
                     if (checkResponse.status === 404) {
-                        // ID свободен, можно использовать
                         break;
                     }
                 } catch (error) {
@@ -100,13 +202,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Создаем данные для отправки
             const courierData = {
                 data: [{
                     courier_id: courierId,
                     type: courierType,
                     regions: regions,
-                    working_hours: workingHours
+                    working_hours: workingHoursInputs
                 }]
             };
 
@@ -120,10 +221,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.ok) {
-                    alert(`Курьер успешно зарегистрирован! Ваш ID: ${courierId}\nТип: ${courierType}\nРабочие часы: ${workingHoursInput}`);
-                    // Переключаем на вкладку входа и заполняем ID
-                    document.querySelector('.tab-button[data-tab="login"]').click();
-                    document.getElementById('courier-id').value = courierId;
+                    const courierResponse = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+                    if (courierResponse.ok) {
+                        const courierInfo = await courierResponse.json();
+                        currentCourierId = courierId;
+                        currentCourierData = courierInfo;
+                        showCourierInfo(courierInfo);
+                    }
                 } else {
                     const errorData = await response.json();
                     alert(`Ошибка регистрации: ${errorData.detail || 'Неизвестная ошибка'}`);
@@ -135,53 +239,104 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-// ЭТО МОЯ НЯШЕЧКА ВКУСНЯШЕЧКА - НЕ УДАЛЯТЬ АРТЕФАКТ
-// А ТАК ВХОД И РЕГА - КЛЮЧЕВЫЕ КНОПКИ, ПО ВХОДУ ПЕРЕНАПРАВЛЯЕМСЯ НА ДРУГУЮ СТРАНИЦУ
+    // Добавление временного интервала
+    const addWorkingHourBtn = document.getElementById('addWorkingHourBtn');
+    if (addWorkingHourBtn) {
+        addWorkingHourBtn.addEventListener('click', () => {
+            const hoursList = document.getElementById('workingHoursList');
+            const hourItem = document.createElement('div');
+            hourItem.className = 'hour-item';
+            hourItem.innerHTML = `
+                <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>
+                <button type="button" class="remove-hour">×</button>
+            `;
+            hoursList.appendChild(hourItem);
 
-//    // Обработка входа -- более менее РАБОТАЮЩЕЕ
-//    const loginButton = document.getElementById('login-button');
-//    if (loginButton) {
-//        loginButton.addEventListener('click', async () => {
-//            const courierId = document.getElementById('courier-id').value;
-//
-//            if (!courierId) {
-//                alert('Пожалуйста, введите ID курьера');
-//                return;
-//            }
-//
-//            try {
-//                const response = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
-//
-//                if (response.ok) {
-//                    // Перенаправляем на страницу курьера с ID
-//                    window.location.href = `courier.html?id=${courierId}`;
-//                } else  {
-//                    alert(`Курьер с ID ${courierId} не найден`);
-//                }
-//            } catch (error) {
-//                console.error('Ошибка:', error);
-//                alert('Не удалось подключиться к серверу');
-//            }
-//        });
-//    }
+            const removeButton = hourItem.querySelector('.remove-hour');
+            removeButton.addEventListener('click', () => {
+                hoursList.removeChild(hourItem);
+            });
+        });
+    }
 
-//    // Обработка регистрации
-//    const registerButton = document.getElementById('register-button');
-//    if (registerButton) {
-//        registerButton.addEventListener('click', async () => {
-//            // ... (предыдущий код регистрации остается без изменений до успешной регистрации)
-//
-//            if (response.ok) {
-//                alert(`Курьер успешно зарегистрирован! Ваш ID: ${courierId}`);
-//                // Перенаправляем на страницу курьера с новым ID
-//                window.location.href = `courier.html?id=${courierId}`;
-//            } else {
-//                const errorData = await response.json();
-//                alert(`Ошибка регистрации: ${errorData.detail || 'Неизвестная ошибка'}`);
-//            }
-//
-//        });
-//    }
+    function showCourierInfo(courierData) {
+        const courierTypeMap = {
+            'foot': 'Пеший курьер',
+            'bike': 'Курьер на велосипеде',
+            'car': 'Курьер на автомобиле'
+        };
+
+        let infoHTML = `
+            <p><strong>ID курьера:</strong> ${courierData.courier_id}</p>
+            <p><strong>Заработок:</strong> ${courierData.earnings} ₽</p>
+        `;
+
+        if (courierData.rating !== undefined) {
+            infoHTML += `<p><strong>Рейтинг:</strong> ${courierData.rating.toFixed(2)}</p>`;
+        }
+
+        infoHTML += `
+            <div class="editable-field">
+                <label for="edit-courier-type">Тип курьера:</label>
+                <select id="edit-courier-type">
+                    <option value="foot" ${courierData.courier_type === 'foot' ? 'selected' : ''}>Пеший курьер</option>
+                    <option value="bike" ${courierData.courier_type === 'bike' ? 'selected' : ''}>Курьер на велосипеде</option>
+                    <option value="car" ${courierData.courier_type === 'car' ? 'selected' : ''}>Курьер на автомобиле</option>
+                </select>
+            </div>
+            <div class="editable-field">
+                <label for="edit-regions">Регионы работы:</label>
+                <input type="text" id="edit-regions" value="${courierData.regions.join(', ')}">
+            </div>
+            <div class="editable-field">
+                <label>Рабочие часы:</label>
+                <button type="button" class="add-hour" id="addEditWorkingHourBtn">Добавить временной интервал</button>
+                <div class="hours-list" id="edit-working-hours">
+                    ${courierData.working_hours.map(wh => `
+                        <div class="hour-item">
+                            <input type="text" class="hour-input" value="${wh}" required>
+                            <button type="button" class="remove-hour">×</button>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        courierInfo.innerHTML = infoHTML;
+
+        authContainer.classList.add('hidden');
+        setTimeout(() => {
+            courierPanel.classList.add('visible');
+        }, 500);
+
+        // Добавляем обработчики для кнопок удаления временных интервалов
+        document.querySelectorAll('#edit-working-hours .remove-hour').forEach(button => {
+            button.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
+        });
+
+        // Обработчик для кнопки "Добавить временной интервал" в режиме редактирования
+        const addEditWorkingHourBtn = document.getElementById('addEditWorkingHourBtn');
+        if (addEditWorkingHourBtn) {
+            addEditWorkingHourBtn.addEventListener('click', () => {
+                const hoursList = document.getElementById('edit-working-hours');
+                const hourItem = document.createElement('div');
+                hourItem.className = 'hour-item';
+                hourItem.innerHTML = `
+                    <input type="text" class="hour-input" placeholder="HH:MM-HH:MM" required>
+                    <button type="button" class="remove-hour">×</button>
+                `;
+                hoursList.appendChild(hourItem);
+
+                const removeButton = hourItem.querySelector('.remove-hour');
+                removeButton.addEventListener('click', () => {
+                    hoursList.removeChild(hourItem);
+                });
+            });
+        }
+    }
+
 
     // Матричный эффект с японскими иероглифами
     const canvas = document.createElement('canvas');
