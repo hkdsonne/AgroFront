@@ -1,3 +1,25 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>AgroDelivery Service</title>-->
+<!--    <link rel="stylesheet" href="/static/css/style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="falling-glyphs" id="falling-glyphs"></div>-->
+<!--    <div class="container">-->
+<!--        <div class="card">-->
+<!--            <h1>Блестяшки</h1>-->
+<!--            <h2>AgroDelivery Service</h2>-->
+<!--            <button class="btn" onclick="window.location.href='/courier'">Курьер</button>-->
+<!--            <button class="btn" onclick="window.location.href='/pokupatel'">Покупатель</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <script src="/static/scripts/main.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,10 +34,35 @@
         <div class="card">
             <h1>Блестяшки</h1>
             <h2>AgroDelivery Service</h2>
-            <button class="btn" onclick="window.location.href='/courier'">Курьер</button>
+            <button class="btn" onclick="window.location.href='/courier-auth'">Курьер</button>
             <button class="btn" onclick="window.location.href='/pokupatel'">Покупатель</button>
         </div>
     </div>
     <script src="/static/scripts/main.js"></script>
+    <script>
+        document.getElementById('courierBtn').addEventListener('click', function() {
+            // Создаем iframe для загрузки courier-auth.html
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = '/courier-auth.html';
+            document.body.appendChild(iframe);
+
+            // После загрузки iframe перенаправляем на страницу курьера
+            iframe.onload = function() {
+                // Импортируем скрипты из courier-auth.html
+                const scripts = iframe.contentDocument.querySelectorAll('script');
+                scripts.forEach(script => {
+                    if (script.src) {
+                        const newScript = document.createElement('script');
+                        newScript.src = script.src;
+                        document.body.appendChild(newScript);
+                    }
+                });
+
+                // Перенаправляем на страницу курьера
+                window.location.href = '/courier-auth.html';
+            };
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курьерская служба</title>
+    <link rel="stylesheet" href="css/courier-auth.css">
+</head>
+<body>
+<button class="back-button" id="back-button">← На главную</button>
+    <div class="auth-container">
+        <h1>Блестяшки</h1>
+        <h2>AgroDelivery Service</h2>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="login">Вход</button>
+            <button class="tab-button" data-tab="register">Регистрация</button>
+        </div>
+        <div class="tab-content active" id="login">
+            <input type="number" id="courier-id" placeholder="Введите ваш ID">
+            <button id="login-button">Войти</button>
+        </div>
+        <div class="tab-content" id="register">
+            <select id="courier-type">
+                <option value="foot">Пешком</option>
+                <option value="bike">Велосипед</option>
+                <option value="car">Автомобиль</option>
+            </select>
+            <input type="text" id="working-hours" placeholder="Рабочие часы (например, 09:00-18:00)">
+            <button id="register-button">Зарегистрироваться</button>
+        </div>
+    </div>
+    <script src="scripts/courier-auth.js"></script>
+</body>
+</html>
