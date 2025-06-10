@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Мучилась с CORS, оказалось все не то, помогла перезагрузка компа :)&#10;Ну и самое главное - в БД записываются созданные заказы!!!!">
-      <change afterPath="$PROJECT_DIR$/static/css/courier-auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/scripts/courier-auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/courier-auth.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/scripts/courier.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pokupatel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pokupatel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/courier-auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier-auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/courier-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courier-auth.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

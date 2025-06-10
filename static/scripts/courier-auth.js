@@ -119,13 +119,14 @@
 //});
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Кнопка возврата на главную
+        // Кнопка возврата на главную
     const backButton = document.getElementById('back-button');
     if (backButton) {
         backButton.addEventListener('click', () => {
-            window.location.href = '/'; // Или другой URL главной страницы
+            window.location.href = '/';
         });
     }
+
     // Переключение между вкладками
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -133,10 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const tabId = button.getAttribute('data-tab');
-
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
-
             button.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         });
@@ -159,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     const courierData = await response.json();
                     alert(`Добро пожаловать, курьер #${courierId}! Тип: ${courierData.courier_type}`);
-                    // Здесь можно перенаправить на страницу курьера или выполнить другие действия
+                    // Здесь можно перенаправить на страницу курьера
                 } else if (response.status === 404) {
                     alert(`Курьер с ID ${courierId} не найден`);
                 } else {
@@ -175,10 +174,84 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработка регистрации
     const registerButton = document.getElementById('register-button');
     if (registerButton) {
-        registerButton.addEventListener('click', () => {
+        registerButton.addEventListener('click', async () => {
             const courierType = document.getElementById('courier-type').value;
-            const workingHours = document.getElementById('working-hours').value;
-            alert(`Регистрация: Тип - ${courierType}, Рабочие часы - ${workingHours}`);
+            const workingHoursInput = document.getElementById('working-hours').value;
+
+            if (!workingHoursInput) {
+                alert('Пожалуйста, укажите рабочие часы');
+                return;
+            }
+
+            // Проверяем формат рабочего времени
+            const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]-([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            if (!timeRegex.test(workingHoursInput)) {
+                alert('Неверный формат времени. Используйте HH:MM-HH:MM');
+                return;
+            }
+
+            const workingHours = [workingHoursInput];
+            const regions = [1]; // По умолчанию регион 1, можно добавить поле для выбора регионов
+
+            // Генерируем случайный ID и проверяем его уникальность
+            let courierId;
+            let attempts = 0;
+            const maxAttempts = 10;
+
+            while (attempts < maxAttempts) {
+                courierId = Math.floor(Math.random() * 10000) + 1;
+
+                try {
+                    const checkResponse = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+
+                    if (checkResponse.status === 404) {
+                        // ID свободен, можно использовать
+                        break;
+                    }
+                } catch (error) {
+                    console.error('Ошибка проверки ID:', error);
+                }
+
+                attempts++;
+            }
+
+            if (attempts >= maxAttempts) {
+                alert('Не удалось найти свободный ID. Попробуйте еще раз.');
+                return;
+            }
+
+            // Создаем данные для отправки
+            const courierData = {
+                data: [{
+                    courier_id: courierId,
+                    type: courierType,
+                    regions: regions,
+                    working_hours: workingHours
+                }]
+            };
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/couriers/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(courierData)
+                });
+
+                if (response.ok) {
+                    alert(`Курьер успешно зарегистрирован! Ваш ID: ${courierId}\nТип: ${courierType}\nРабочие часы: ${workingHoursInput}`);
+                    // Переключаем на вкладку входа и заполняем ID
+                    document.querySelector('.tab-button[data-tab="login"]').click();
+                    document.getElementById('courier-id').value = courierId;
+                } else {
+                    const errorData = await response.json();
+                    alert(`Ошибка регистрации: ${errorData.detail || 'Неизвестная ошибка'}`);
+                }
+            } catch (error) {
+                console.error('Ошибка регистрации:', error);
+                alert('Не удалось подключиться к серверу');
+            }
         });
     }
 
@@ -258,18 +331,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-/////теперь сделай взаимодействие с регистрацией: тебе дан бэкенд и поля для создания курьера из документации: http://127.0.0.1:8000/docs {
-//  "data": [
-//    {
-//      "courier_id": 1,
-//      "type": "foot",
-//      "regions": [
-//        1, 2, 3
-//      ],
-//      "working_hours": [
-//        "09:00-12:00"
-//      ]
-//    }
-//  ]
-//} Заполняй id рандомно, а также проверяй на уникальность в базе данных. И если такой id уже есть, не очищай поля, а давай другой id. Меняй файлы с названием courier-auth///
