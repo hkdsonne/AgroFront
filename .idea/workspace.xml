@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!">
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="У НАС ЕСТЬ ИКОНКА - ФИНИШ!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/courier-auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courier-auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/courier.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courier.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pokupatel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pokupatel.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749592542344</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="У НАС ЕСТЬ ИКОНКА - ФИНИШ!!">
+      <option name="closed" value="true" />
+      <created>1749627690666</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1749627690666</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,6 +237,7 @@
     <MESSAGE value="Сделала чтобы в БД сохранялись новые курьеры а также проверка на входе" />
     <MESSAGE value="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!" />
     <MESSAGE value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
+    <MESSAGE value="У НАС ЕСТЬ ИКОНКА - ФИНИШ!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="У НАС ЕСТЬ ИКОНКА - ФИНИШ!!" />
   </component>
 </project>
