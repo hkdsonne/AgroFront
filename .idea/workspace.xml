@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!">
+    <list default="true" id="de1515d1-cfd6-4ff9-acaa-ba939365bf07" name="Changes" comment="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/courier-auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier-auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/courier.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/courier.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/scripts/pokupatel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/scripts/pokupatel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +27,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "hkdsonne"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/hkdsonne/AgroFront.git",
+    "accountId": "11fa8a7b-2ebd-478a-9f7f-d97b1c8ec148"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -32,18 +47,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/AgroDeliver&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/AgroDeliver",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AgroFront" />
@@ -77,7 +93,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-dfff61a61320-9cdd278e9d02-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.25410.159" />
       </set>
     </attachedChunks>
   </component>
@@ -194,15 +210,7 @@
       <option name="project" value="LOCAL" />
       <updated>1749587973878</updated>
     </task>
-    <task id="LOCAL-00014" summary="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!">
-      <option name="closed" value="true" />
-      <created>1749592542344</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1749592542344</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,7 +237,6 @@
     <MESSAGE value="Мучилась с CORS, оказалось все не то, помогла перезагрузка компа :)&#10;Ну и самое главное - в БД записываются созданные заказы!!!!" />
     <MESSAGE value="Сделала чтобы в БД сохранялись новые курьеры а также проверка на входе" />
     <MESSAGE value="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!" />
-    <MESSAGE value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь не только создаем заказы, но и распределяем и завершаем!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Виртуозно сохраняем новых курьеров + приносим досье на уже существующих, это придает сил!!!" />
   </component>
 </project>

@@ -18,7 +18,7 @@
 ////            const order = this.closest('.order');
 ////            const orderId = order.dataset.orderId;
 ////
-////            fetch(`http://127.0.0.1:8000/orders/${orderId}/complete`, {
+////            fetch(`http://127.0.0.1:8080/orders/${orderId}/complete`, {
 ////                method: 'POST',
 ////                headers: {
 ////                    'Content-Type': 'application/json',
@@ -57,7 +57,7 @@
 //    }
 //
 //    // Загружаем данные курьера
-//    fetch(`http://127.0.0.1:8000/couriers/${courierId}`)
+//    fetch(`http://127.0.0.1:8080/couriers/${courierId}`)
 //        .then(response => {
 //            if (!response.ok) {
 //                throw new Error('Курьер не найден');
@@ -74,7 +74,7 @@
 //            document.getElementById('courier-earnings').textContent = courier.earnings ? `${courier.earnings} руб.` : '0 руб.';
 //
 //            // Загружаем заказы курьера
-//            return fetch(`http://127.0.0.1:8000/couriers/${courierId}/orders`);
+//            return fetch(`http://127.0.0.1:8080/couriers/${courierId}/orders`);
 //        })
 //        .then(response => {
 //            if (!response.ok) {
@@ -135,7 +135,7 @@
 //        const orderElement = this.closest('.order');
 //        const orderId = orderElement.dataset.orderId;
 //
-//        fetch(`http://127.0.0.1:8000/orders/${orderId}/complete`, {
+//        fetch(`http://127.0.0.1:8080/orders/${orderId}/complete`, {
 //            method: 'POST',
 //            headers: {
 //                'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Загружаем данные курьера
-    fetch(`http://127.0.0.1:8000/couriers/${courierId}`)
+    fetch(`http://127.0.0.1:8080/couriers/${courierId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Курьер не найден');
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('courier-earnings').textContent = courier.earnings ? `${courier.earnings} руб.` : '0 руб.';
 
             // Загружаем заказы курьера
-            return fetch(`http://127.0.0.1:8000/couriers/${courierId}/orders`);
+            return fetch(`http://127.0.0.1:8080/couriers/${courierId}/orders`);
         })
         .then(response => {
             if (!response.ok) {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const orderElement = this.closest('.order');
         const orderId = orderElement.dataset.orderId;
 
-        fetch(`http://127.0.0.1:8000/orders/${orderId}/complete`, {
+        fetch(`http://127.0.0.1:8080/orders/${orderId}/complete`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             orderElement.querySelector('.status').textContent = 'завершен';
             this.remove();
             // Обновляем данные курьера (рейтинг и заработок)
-            return fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+            return fetch(`http://127.0.0.1:8080/couriers/${courierId}`);
         })
         .then(response => response.json())
         .then(courier => {

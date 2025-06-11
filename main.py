@@ -84,7 +84,7 @@ async def read_courier(request: Request, id: int = None):
         return RedirectResponse(url="/courier-auth")
     # Получаем данные курьера с бэкенда
     async with httpx.AsyncClient() as client:
-        response = await client.get(f"http://127.0.0.1:8000/couriers/{id}")
+        response = await client.get(f"http://127.0.0.1:8080/couriers/{id}")
         if response.status_code != 200:
             raise HTTPException(status_code=404, detail="Courier not found")
         courier_data = response.json()

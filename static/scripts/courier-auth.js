@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
+                const response = await fetch(`http://127.0.0.1:8080/couriers/${currentCourierId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/couriers/${currentCourierId}`, {
+                const response = await fetch(`http://127.0.0.1:8080/couriers/${currentCourierId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+                const response = await fetch(`http://127.0.0.1:8080/couriers/${courierId}`);
 
                 if (response.ok) {
                     const courierData = await response.json();
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 courierId = Math.floor(Math.random() * 10000) + 1;
 
                 try {
-                    const checkResponse = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+                    const checkResponse = await fetch(`http://127.0.0.1:8080/couriers/${courierId}`);
 
                     if (checkResponse.status === 404) {
                         break;
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                const response = await fetch('http://127.0.0.1:8000/couriers/', {
+                const response = await fetch('http://127.0.0.1:8080/couriers/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (response.ok) {
-                    const courierResponse = await fetch(`http://127.0.0.1:8000/couriers/${courierId}`);
+                    const courierResponse = await fetch(`http://127.0.0.1:8080/couriers/${courierId}`);
                     if (courierResponse.ok) {
                         const courierInfo = await courierResponse.json();
                         currentCourierId = courierId;
